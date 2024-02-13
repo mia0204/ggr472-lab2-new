@@ -19,13 +19,33 @@ map.on('load', () => {
     });
 
     map.addLayer({
-        'id': 'water-station',
+        'id': 'water-station-and washroom',
         'type': 'circle',
         'source': 'water',
         'paint': {
-            'circle-radius': 4,
+            'circle-radius': 3,
             'circle-color': '#66f0ff',
-            'circle-outline-color': 'blue'
+            'circle-stroke-width': 1,
+            'circle-stroke-color': 'black'
+        }
+    });
+
+    //add places of interest and attraction data from a GeoJSON file
+    map.addSource('attraction', {
+        type: 'geojson',
+        //raw link in github to the geojson file
+        data: 'https://raw.githubusercontent.com/mia0204/ggr472-lab2-new/main/Places%20of%20Interest%20and%20Attractions%20(1).geojson'
+    });
+
+    map.addLayer({
+        'id': 'place-of-interest',
+        'type': 'circle',
+        'source': 'attraction',
+        'paint': {
+            'circle-radius': 5,
+            'circle-color': '#ffb700',
+            'circle-stroke-width': 1,
+            'circle-stroke-color': 'white'
         }
     });
 
@@ -66,3 +86,4 @@ map.on('load', () => {
     },);
 
 });
+
